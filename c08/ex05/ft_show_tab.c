@@ -6,11 +6,12 @@
 /*   By: zhlim <zhlim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:02:08 by zhlim             #+#    #+#             */
-/*   Updated: 2022/09/07 14:01:23 by zhlim            ###   ########.fr       */
+/*   Updated: 2022/09/07 17:24:59 by zhlim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stock_str.h"
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {
