@@ -13,73 +13,40 @@
 #include <stdlib.h>
 #include <stdio.h> 
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int	str_count(char **strs, int size)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = 0;
-	while (i < size)
-	{
-		len += ft_strlen(strs[i]);
-		i++;
-	}
-	return (len);
-}
-
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	char	*res;
-	int	i;
-	int	j;
-	int	k;
+	char	*str;
+	int		count;
+	int		i;
+	int		j;
 
-	i = 0;
-	k = 0;
-	if (!(res = (char *)malloc(sizeof(char) * (str_count(strs, size) + ft_strlen(sep) * (size - 1) + 1))))
+	str = (char *)malloc(sizeof(strs));
+	if (!(str))
 		return (NULL);
-	while (i < size)
+	count = 0;
+	i = -1;
+	while (++i < size)
 	{
 		j = 0;
 		while (strs[i][j])
-		{
-			res[k] = strs[i][j];
-			k++;
-			j++;
-		}
-		if (i < size - 1)
-		{	j = 0;
-			while (sep[j])
-			{
-				res[k] = sep[j];
-				k++;
-				j++;
-			}
-		}
-		i++;
+			str[count++] = strs[i][j++];
+		j = 0;
+		while (sep[j] && i < size - 1)
+			str[count++] = sep[j++];
 	}
-	res[k] = 0;
-	return (res);
+	str[count] = '\0';
+	return (str);
 }
 
-int main(int ac, char **av)
+int main(void)
 {
-	char 	*b;
-	char	**a;
+	char *a[5];
 
-	a = &av[1];
-	b = ft_strjoin((ac - 2), a, av[ac - 1]);
-	printf("%s\n", b);
+	a[0] = "Hello";
+	a[1] = "World";
+	a[2] = "What";
+	a[3] = "The";
+	a[4] = "Good";
+	printf ("%s\n", ft_strjoin(5, a, "+-_"));
 	return (0);
 }
